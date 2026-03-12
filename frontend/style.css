@@ -224,72 +224,91 @@ button:hover { background: #4338ca; }
 /* =========================
    FOOTER (más pequeño pero con texto más grande)
 ========================= */
+/* ===== Footer base ===== */
 footer {
   background-color: #000;
   color: #fff;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Menos padding y gap por defecto */
 .footer-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: clamp(1.4rem, 2.5vw, 2.2rem);
+
+  /* ↓ Antes: clamp(1.4rem, 2.5vw, 2.2rem) */
+  gap: clamp(0.8rem, 1.6vw, 1.4rem);
+
   max-width: 1200px;
   margin: auto;
-  padding: clamp(1.4rem, 2.4vw, 2rem) clamp(1rem, 3vw, 1.5rem);
+
+  /* ↓ Antes: clamp(1.4rem, 2.4vw, 2rem) clamp(1rem, 3vw, 1.5rem) */
+  padding: clamp(0.9rem, 1.4vw, 1.4rem) clamp(0.8rem, 2vw, 1.2rem);
 }
 
+/* Logo más contenido */
 .footer-logo {
-  width: clamp(130px, 11vw, 180px);
+  /* ↓ Antes: clamp(130px, 11vw, 180px) */
+  width: clamp(100px, 9vw, 140px);
   height: auto;
 }
 
-
+/* Párrafo un poco más pequeño y con menor leading */
 .footer-desc {
-  margin-top: 0.5rem;
-  font-size: clamp(1.05rem, 0.7vw + 0.75rem, 1.2rem);
-  line-height: 1.55;
+  margin-top: 0.4rem;
+  /* ↓ Antes: clamp(1.05rem, 0.7vw + 0.75rem, 1.2rem) */
+  font-size: clamp(0.95rem, 0.5vw + 0.7rem, 1.05rem);
+  line-height: 1.45;
   max-width: 26ch;
   color: #cfe6f2;
 }
 
-
+/* Títulos más compactos */
 .footer-title {
   color: #ececec;
-  font-size: clamp(1.15rem, 0.9vw + 0.75rem, 1.35rem);
-  margin-bottom: 0.8rem;
+  /* ↓ Antes: clamp(1.15rem, 0.9vw + 0.75rem, 1.35rem) */
+  font-size: clamp(1.05rem, 0.7vw + 0.7rem, 1.2rem);
+  margin-bottom: 0.55rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
+/* Lista con menos separación vertical */
 .footer-links ul {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.35rem; /* ↓ antes .5rem */
 }
 
-
+/* Links: tipografía y subrayado animado más corto */
 .footer-links a {
   color: #e2e2e2;
   text-decoration: none;
   position: relative;
   display: inline-block;
-  padding-bottom: 8px;
-  line-height: 1.4;
+
+  /* ↓ Antes: padding-bottom: 8px */
+  padding-bottom: 5px;
+
+  line-height: 1.35;
   border-bottom: none;
   transition: color .2s ease;
-  font-size: clamp(1.05rem, 0.7vw + 0.75rem, 1.25rem);
-}
 
+  /* ↓ Antes: clamp(1.05rem, 0.7vw + 0.75rem, 1.25rem) */
+  font-size: clamp(0.98rem, 0.5vw + 0.7rem, 1.1rem);
+}
 
 .footer-links a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -4px;
+
+  /* ↑ subrayado más cercano al texto */
+  bottom: -3px;
+
   width: 100%;
   height: 1.5px;
   background: rgba(100, 200, 255, 0.55);
@@ -308,23 +327,27 @@ footer {
   background: #00E5FF;
 }
 
-
+/* Contacto más pequeño */
 .footer-contact p {
-  font-size: clamp(1.05rem, 0.7vw + 0.75rem, 1.2rem);
-  margin-bottom: .35rem;
+  /* ↓ Antes: clamp(1.05rem, 0.7vw + 0.75rem, 1.2rem) */
+  font-size: clamp(0.98rem, 0.5vw + 0.7rem, 1.05rem);
+  margin-bottom: 0.3rem;
   color: #d7e7f2;
 }
 
-
+/* Franja inferior más delgada */
 .footer-bottom {
   border-top: 1px solid #1b2630;
   text-align: center;
-  padding: .8rem 1rem;
-  font-size: 0.95rem; 
+
+  /* ↓ Antes: .8rem 1rem */
+  padding: 0.55rem 0.8rem;
+
+  font-size: 0.9rem;
   color: #7f8c8d;
 }
 
-
+/* Marca */
 @font-face {
   font-family: 'Fifties Movies';
   src: url('assets/fonts/Fifties Movies.ttf') format('truetype');
@@ -336,12 +359,25 @@ footer {
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  gap: .4rem;
+
+  /* ↓ Antes: .4rem */
+  gap: 0.3rem;
 }
 
 /* =========================
    RESPONSIVE
 ========================= */
+
+/* Laptops / tablets (reduce todavía más) */
+@media (max-width: 1200px) {
+  .footer-container {
+    gap: clamp(0.7rem, 1.2vw, 1rem);
+    padding: clamp(0.8rem, 1.2vw, 1.1rem) clamp(0.7rem, 1.6vw, 1rem);
+  }
+  .footer-logo { width: clamp(90px, 8.2vw, 120px); }
+}
+
+/* Móviles y pantallas pequeñas */
 @media (max-width: 768px) {
   .hamburger { display: block; }
 
@@ -359,25 +395,26 @@ footer {
     z-index: 9;
   }
   .nav-menu.active { left: 0; }
-
-  .nav-item { margin: .8rem 0; }
+  .nav-item { margin: 0.8rem 0; }
 
   .footer-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 1.6rem;
-  }
-  
-    .logo {
-        width: 32vw;
-        max-width: 140px;
-        min-width: 90px;
-    }
 
-  .footer-desc { max-width: 100%; align-self: center; }
+    /* ↓ Antes: 1.6rem */
+    gap: 1rem;
+    padding: 0.8rem 0.9rem;
+  }
+
+  .logo {
+    width: 28vw;      /* ↓ */
+    max-width: 120px; /* ↓ */
+    min-width: 80px;  /* ↓ */
+  }
 
   .footer-brand { align-items: center; text-align: center; }
+  .footer-desc { max-width: 100%; align-self: center; }
 }
 
 
